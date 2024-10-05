@@ -42,9 +42,7 @@
     var game = new Phaser.Game(config);
     var player;
     var cursors;
-    var jumpCount = 0;
-    var maxJumps = 2;
-
+    var airJump;
     function preload() {
       this.load.image('sky', 'assets/sky.png');
       this.load.image('ground', 'assets/platform.png');
@@ -118,13 +116,15 @@
         player.anims.play('turn');
       }
 
-      if ((cursors.up.isDown && player.body.touching.down) && jumpCount < 2) {
-        player.setVelocityY(-330);
-        jumpCount++;
-      }
-
-      if (player.body.touching.down) {
-        jumpCount = 0;
+      if (Phaser.Input.Keyboard.JustDown(cursors.up)){ //Double Jump logic
+        if (player.body.touching.down){
+          this.canJump = true;
+          player.setVelocityY(-400);
+        }
+        else if (this.canJump){
+          this.canJump = false;
+          player.setVelocityY(-350);
+        }
       }
     }
 
