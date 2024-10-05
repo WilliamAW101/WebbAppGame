@@ -2,6 +2,11 @@ import './style.css'
 import Phaser from 'phaser'
 
 
-cons config = {
-  type: Phaser.WEBGL
+
+const config = {
+  type: Phaser.WEBGL,
+  width:500,
+  height:500,
+  
+
 }
