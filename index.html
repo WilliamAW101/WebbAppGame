@@ -1,7 +1,5 @@
 <!doctype html>
 <html lang="en">
-<<<<<<< HEAD
-=======
   <head>
     <script type = "text/javascript" src = "phaser.min.js"></script>
     <script type = "text/javascript" src = "game.js"></script>
@@ -11,7 +9,6 @@
     <title>HVA</title>
   </head>
   <body>
->>>>>>> f72ddf9b7d357775cc88c2e6121db1aff4ae7f78
 
 <head>
   <meta charset="UTF-8" />
@@ -74,7 +71,7 @@
 
       player = this.physics.add.sprite(115, 450, 'dude');
 
-      player.setBounce(0.2);
+      player.setBounce(0.1);
       player.setCollideWorldBounds(true);
       player.body.setGravityY(500)
       this.physics.add.collider(player, platforms);
@@ -121,7 +118,7 @@
         player.anims.play('turn');
       }
 
-      if (cursors.up.isDown && player.body.touching.down || jumpCount < 2) {
+      if ((cursors.up.isDown && player.body.touching.down) && jumpCount < 2) {
         player.setVelocityY(-330);
         jumpCount++;
       }
